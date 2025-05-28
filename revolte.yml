@@ -1,7 +1,7 @@
 revolte:
   version: '1.0'
-  project: Azure-Proj
-  appName: az-be-app
+  project: Verizon project
+  appName: z-app
   env:
     production:
       branch: main
@@ -67,35 +67,7 @@ revolte:
             storage: 50
             engine: postgres
     qa:
-      branch: main
-      services:
-        rid_1:
-          name: web-service
-          type: WEB_SERVICE
-          entryPoint: index.js
-          specifications:
-            cpu: 2
-            memory: 2
-            storage: 30
-          properties:
-            health: /
-            port: 8080
-            variables:
-              BASE_URL: /api/v1
-              DATABASE_URL: '#{db.dbUrl}'
-              DATABASE_PORT: '#{db.dbPort}'
-              DATABASE_USERNAME: '#{db.dbUsername}'
-              DATABASE_PASSWORD: '#{db.dbPassword}'
-              DATABASE_NAME: '#{db.dbName}'
-        rid_2:
-          name: db
-          type: DATABASE
-          specifications:
-            cpu: 2
-            memory: 4
-            storage: 50
-            engine: mysql
-    preview:
+      branch: qa
       services:
         rid_1:
           name: web-service
@@ -123,3 +95,31 @@ revolte:
             memory: 4
             storage: 50
             engine: postgres
+    preview:
+      services:
+        rid_1:
+          name: web-service
+          type: WEB_SERVICE
+          entryPoint: index.js
+          specifications:
+            cpu: 2
+            memory: 2
+            storage: 30
+          properties:
+            health: /
+            port: 8080
+            variables:
+              BASE_URL: /api/v1
+              DATABASE_URL: '#{db.dbUrl}'
+              DATABASE_PORT: '#{db.dbPort}'
+              DATABASE_USERNAME: '#{db.dbUsername}'
+              DATABASE_PASSWORD: '#{db.dbPassword}'
+              DATABASE_NAME: '#{db.dbName}'
+        rid_2:
+          name: db
+          type: DATABASE
+          specifications:
+            cpu: 2
+            memory: 4
+            storage: 50
+            engine: mysql
