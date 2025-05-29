@@ -1,7 +1,7 @@
 revolte:
   version: '1.0'
-  project: Verizon project
-  appName: z-app
+  project: Sas Project
+  appName: s-app
   env:
     production:
       branch: main
@@ -49,7 +49,7 @@ revolte:
             memory: 2
             storage: 30
           properties:
-            health: /health
+            health: /
             port: 8080
             variables:
               BASE_URL: /api/v1
@@ -65,7 +65,7 @@ revolte:
             cpu: 2
             memory: 4
             storage: 50
-            engine: postgres
+            engine: mysql
     qa:
       branch: qa
       services:
@@ -106,7 +106,7 @@ revolte:
             memory: 2
             storage: 30
           properties:
-            health: /
+            health: /health
             port: 8080
             variables:
               BASE_URL: /api/v1
@@ -122,4 +122,4 @@ revolte:
             cpu: 2
             memory: 4
             storage: 50
-            engine: mysql
+            engine: postgres
