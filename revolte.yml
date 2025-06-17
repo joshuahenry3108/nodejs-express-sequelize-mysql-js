@@ -16,6 +16,7 @@ revolte:
             errorPage: error.html
             variables:
               API_URL: /api/v1
+              VAR_1: variable-1
     staging:
       branch: staging
       services:
