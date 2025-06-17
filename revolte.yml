@@ -1,9 +1,44 @@
 revolte:
   version: '1.0'
-  project: Applit new
+  project: new-public-appgie
   appName: new-app-new
   env:
-    preview:
+    production:
+      branch: main
+      services:
+        rid_1:
+          name: web-service
+          type: WEB_SERVICE
+          entryPoint: index.js
+          domain: api.revolte.com
+          specifications:
+            cpu: 2
+            memory: 2
+            storage: 30
+            autoScaling:
+              replica:
+                min: 1
+                max: 3
+          properties:
+            health: /health
+            port: 8080
+            variables:
+              BASE_URL: /api/v1
+              DATABASE_URL: '#{db.dbUrl}'
+              DATABASE_PORT: '#{db.dbPort}'
+              DATABASE_USERNAME: '#{db.dbUsername}'
+              DATABASE_PASSWORD: '#{db.dbPassword}'
+              DATABASE_NAME: '#{db.dbName}'
+        rid_2:
+          name: db
+          type: DATABASE
+          specifications:
+            cpu: 2
+            memory: 4
+            storage: 50
+            engine: postgres
+    staging:
+      branch: staging
       services:
         rid_1:
           name: web-service
@@ -32,3 +67,62 @@ revolte:
             memory: 4
             storage: 50
             engine: postgres
+    qa:
+      branch: qa
+      services:
+        rid_1:
+          name: web-service
+          type: WEB_SERVICE
+          entryPoint: index.js
+          specifications:
+            cpu: 2
+            memory: 2
+            storage: 30
+          properties:
+            health: /health
+            port: 8080
+            variables:
+              BASE_URL: /api/v1
+              DATABASE_URL: '#{db.dbUrl}'
+              DATABASE_PORT: '#{db.dbPort}'
+              DATABASE_USERNAME: '#{db.dbUsername}'
+              DATABASE_PASSWORD: '#{db.dbPassword}'
+              DATABASE_NAME: '#{db.dbName}'
+              DATABASE_CONNECTION_STRING: '#{db.dbConnectionString}'
+        rid_2:
+          name: db
+          type: DATABASE
+          specifications:
+            cpu: 2
+            memory: 4
+            storage: 50
+            engine: postgres
+    preview:
+      services:
+        rid_1:
+          name: web-service
+          type: WEB_SERVICE
+          entryPoint: index.js
+          specifications:
+            cpu: 1
+            memory: 8
+            storage: 30
+          properties:
+            health: /health
+            port: 8080
+            variables:
+              BASE_URL: /api/v1
+              DATABASE_URL: '#{cdb.dbUrl}'
+              DATABASE_PORT: '#{cdb.dbPort}'
+              DATABASE_USERNAME: '#{cdb.dbUsername}'
+              DATABASE_PASSWORD: '#{cdb.dbPassword}'
+              DATABASE_NAME: '#{cdb.dbName}'
+              DATABASE_CONNECTION_STRING: '#{cdb.dbConnectionString}'
+        rid_2:
+          name: cdb
+          type: DATABASE
+          specifications:
+            cpu: 2
+            memory: 4
+            storage: 50
+            engine: mysql
