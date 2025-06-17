@@ -105,7 +105,7 @@ revolte:
           entryPoint: index.js
           specifications:
             cpu: 1
-            memory: 8
+            memory: 1
             storage: 30
           properties:
             health: /health
