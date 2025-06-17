@@ -1,31 +1,31 @@
 revolte:
-  version: '1.0'
-  project: My First Project
-  appName: test-mysql
+  version: '5'
+  project: Applit new
+  appName: new-app-new
   env:
     preview:
       services:
         rid_1:
-          name: web-service
+          name: TEST01-web-service
           type: WEB_SERVICE
           entryPoint: index.js
           specifications:
-            cpu: 2
-            memory: 2
+            cpu: 1
+            memory: 8
             storage: 30
           properties:
-            health: /
-            port: 3001
+            health: /health
+            port: 8080
             variables:
               BASE_URL: /api/v1
-              DATABASE_URL: '#{db.dbUrl}'
-              DATABASE_PORT: '#{db.dbPort}'
-              DATABASE_USERNAME: '#{db.dbUsername}'
-              DATABASE_PASSWORD: '#{db.dbPassword}'
-              DATABASE_NAME: '#{db.dbName}'
-              DATABASE_CONNECTION_STRING: '#{db.dbConnectionString}'
+              DATABASE_URL: '#{vdb.dbUrl}'
+              DATABASE_PORT: '#{vdb.dbPort}'
+              DATABASE_USERNAME: '#{vdb.dbUsername}'
+              DATABASE_PASSWORD: '#{vdb.dbPassword}'
+              DATABASE_NAME: '#{vdb.dbName}'
+              DATABASE_CONNECTION_STRING: '#{vdb.dbConnectionString}'
         rid_2:
-          name: db
+          name: vdb
           type: DATABASE
           specifications:
             cpu: 2
