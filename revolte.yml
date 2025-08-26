@@ -4,8 +4,7 @@ revolte:
   appName: backednapp
   env:
     staging:
-      branch: staging
-      codeReview: true
+      branch: preview
       services:
         rid_1:
           type: WEB_SERVICE
@@ -34,8 +33,7 @@ revolte:
             storage: 30
             engine: postgres
     qa:
-      branch: qa
-      codeReview: true
+      branch: preview
       services:
         rid_1:
           type: WEB_SERVICE
@@ -53,7 +51,7 @@ revolte:
               DATABASE_NAME: '#{db.dbName}'
           specifications:
             cpu: 2
-            memory: 2
+            memory: 1
             storage: 30
         rid_2:
           type: DATABASE
@@ -64,7 +62,7 @@ revolte:
             storage: 30
             engine: mysql
     production:
-      branch: main
+      branch: preview
       services:
         rid_1:
           type: WEB_SERVICE
