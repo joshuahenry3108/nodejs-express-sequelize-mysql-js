@@ -1,7 +1,7 @@
 revolte:
   version: '1.0'
-  project: casagrand
-  appName: testapp
+  project: Simlabs
+  appName: nika-code
   env:
     staging:
       branch: preview
