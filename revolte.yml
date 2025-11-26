@@ -71,7 +71,7 @@ revolte:
           name: web-service
           entryPoint: index.js
           properties:
-            health: /health
+            health: /
             port: 8080
             variables:
               BASE_URL: /api/v1
