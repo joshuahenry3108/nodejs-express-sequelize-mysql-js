@@ -1,7 +1,7 @@
 revolte:
   version: '1.0'
-  project: ALB Project
-  appName: third-deplopy
+  project: Aratai
+  appName: one-backend
   env:
     staging:
       branch: main
